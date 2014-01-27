@@ -1,0 +1,41 @@
+{
+  "name": "eve-route-web",
+  "version": "0.1.0",
+  "description": "A web runner for eve-route.js",
+  "private": true,
+  "author": {
+    "name": "Christian Haas",
+    "email": "christian.haas@sevensuns.at"
+  },
+  "licenses": [{
+    "type": "BSD-3-Clause",
+    "url": "https://github.com/dertseha/eve-route.js/blob/master/LICENSE"
+  }],
+  "homepage": "https://github.com/dertseha/eve-route-web.js",
+  "bugs": "https://github.com/dertseha/eve-route-web.js/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dertseha/eve-route-web.js.git"
+  },
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "express": "3.2.x",
+    "infuse.js": "~0.6.9",
+    "jade": "*",
+    "nconf": "0.6.x",
+    "tv4": "~1.0.10",
+    "winston": "0.7.x"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.4.3",
+    "grunt-jsbeautifier": "~0.2.0",
+    "grunt-tv4": "~0.2.0"
+  },
+  "engines": {
+    "node": ">=0.10.x"
+  },
+  "scripts": {
+    "start": "node src/server/main.js"
+  }
+}
