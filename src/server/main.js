@@ -43,6 +43,14 @@ function startWebServer(injector) {
   webServer.start();
 }
 
+function buildBaseUniverse(injector) {
+  injector.getValue("log").info("Building Universe...");
+
+  var builder = require("./BaseUniverseBuilder");
+  var universe = builder.build();
+
+}
+
 function main() {
   var infuse = require("infuse.js");
   var injector = new infuse.Injector();
@@ -51,6 +59,8 @@ function main() {
 
   injector.mapValue("config", getConfiguration());
   injector.mapValue("log", getLogger());
+
+  buildBaseUniverse(injector);
 
   startWebServer(injector);
 }
