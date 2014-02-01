@@ -31,9 +31,9 @@
   },
   "devDependencies": {
     "grunt": "~0.4.1",
-    "grunt-contrib-jshint": "~0.4.3",
+    "grunt-contrib-jshint": "~0.8.0",
     "grunt-jsbeautifier": "~0.2.0",
-    "grunt-tv4": "~0.2.0"
+    "grunt-tv4": "~0.3.1"
   },
   "engines": {
     "node": ">=0.10.x"

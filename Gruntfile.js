@@ -30,7 +30,7 @@ module.exports = function(grunt) {
       options: {
         root: grunt.file.readJSON("src/schema/json-v4.json"),
         multi: false, // Disabled as long as https://github.com/geraintluff/tv4/issues/74 is present
-        banUnknown: true // Disabled as long as https://github.com/geraintluff/tv4/issues/75 is present
+        banUnknown: false // Disabled as long as https://github.com/geraintluff/tv4/issues/75 is present
       },
       schema: {
         src: ["src/schema/**/*.json"]
