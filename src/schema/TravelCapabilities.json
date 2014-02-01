@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+
+  "definitions": {
+    "jumpGateCapability": {
+      "title": "Capability description for using jump gates",
+      "description": "This capability allows the usage of jump gates between systems.",
+
+      "id": "#jumpGateCapability",
+      "type": "object"
+    }
+
+  },
+
+  "title": "Collection of travelling capabilities",
+  "description": "Set one or several of the optional capabilities to indicate their availability.",
+
+  "type": "object",
+  "properties": {
+    "jumpGate": {
+      "$ref": "#jumpGateCapability"
+    }
+  }
+}

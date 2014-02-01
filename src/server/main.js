@@ -33,36 +33,39 @@ function getLogger() {
   return logger;
 }
 
-function startWebServer(injector) {
-  injector.getValue("log").info("Starting application...");
+function startWebServer(injector, businessLogic) {
+  injector.getValue("log").info("Starting web server...");
 
-  var WebServer = require("./WebServer/WebServer.js");
+  var WebServer = require("./WebServer/WebServer");
+  var MessageLibrary = require("./MessageLibrary");
 
-  var webServer = new WebServer(injector);
+  var webServer = new WebServer(injector, new MessageLibrary(injector), businessLogic);
 
   webServer.start();
 }
 
-function buildBaseUniverse(injector) {
+function getBaseUniverse(injector) {
   injector.getValue("log").info("Building Universe...");
 
   var builder = require("./BaseUniverseBuilder");
-  var universe = builder.build();
 
+  return builder.build();
 }
 
 function main() {
   var infuse = require("infuse.js");
   var injector = new infuse.Injector();
 
+  var BusinessLogic = require("./BusinessLogic/BusinessLogic");
+
   injector.mapValue("tv4", require("tv4"));
 
   injector.mapValue("config", getConfiguration());
   injector.mapValue("log", getLogger());
 
-  buildBaseUniverse(injector);
+  injector.mapValue("baseUniverse", getBaseUniverse(injector));
 
-  startWebServer(injector);
+  startWebServer(injector, new BusinessLogic(injector));
 }
 
 main();

@@ -9,7 +9,7 @@
   },
   "licenses": [{
     "type": "BSD-3-Clause",
-    "url": "https://github.com/dertseha/eve-route.js/blob/master/LICENSE"
+    "url": "https://github.com/dertseha/eve-route-web.js/blob/master/LICENSE"
   }],
   "homepage": "https://github.com/dertseha/eve-route-web.js",
   "bugs": "https://github.com/dertseha/eve-route-web.js/issues",
@@ -19,11 +19,13 @@
   },
   "readmeFilename": "README.md",
   "dependencies": {
+    "bluebird": "~1.0.1",
     "express": "3.2.x",
     "infuse.js": "~0.6.9",
     "jade": "*",
     "nconf": "0.6.x",
     "tv4": "~1.0.10",
+    "underscore": "~1.5.2",
     "winston": "0.7.x"
   },
   "devDependencies": {
