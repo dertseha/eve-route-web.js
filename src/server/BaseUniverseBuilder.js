@@ -1,10 +1,10 @@
+/* global __dirname */
 "use strict";
 
-var everoute = require("eve-route");
+var fs = require("fs");
+var path = require("path");
 
-var mapSolarSystems = require("../data/solarSystems.json");
-var mapSolarSystemJumps = require("../data/solarSystemJumps.json");
-var viewJumpGates = require("../data/jumpGates.json");
+var everoute = require("eve-route");
 
 function getTableKeys(table) {
   return table.names.reduce(function(keys, key, index) {
@@ -22,6 +22,7 @@ function getGalaxyIdForSolarSystem(solarSystemData, mapSolarSystemKeys) {
 }
 
 function addSolarSystems(builder, solarSystemIdsByName) {
+  var mapSolarSystems = JSON.parse(fs.readFileSync(path.join(__dirname, "../data/solarSystems.json")));
   var mapSolarSystemKeys = getTableKeys(mapSolarSystems);
 
   mapSolarSystems.data.forEach(function(solarSystemData) {
@@ -48,6 +49,7 @@ function getJumpGateKey(fromSolarSystemId, toSolarSystemId) {
 }
 
 function getJumpGateLocations(solarSystemIdsByName) {
+  var viewJumpGates = JSON.parse(fs.readFileSync(path.join(__dirname, "../data/jumpGates.json")));
   var viewJumpGateKeys = getTableKeys(viewJumpGates);
   var result = {};
 
@@ -68,6 +70,7 @@ function getJumpGateLocations(solarSystemIdsByName) {
 }
 
 function addJumpGates(builder, solarSystemIdsByName) {
+  var mapSolarSystemJumps = JSON.parse(fs.readFileSync(path.join(__dirname, "../data/solarSystemJumps.json")));
   var mapSolarSystemJumpKeys = getTableKeys(mapSolarSystemJumps);
   var jumpGateLocations = getJumpGateLocations(solarSystemIdsByName);
 
