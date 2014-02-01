@@ -1,0 +1,16 @@
+{
+  "route": {
+    "from": {
+      "solarSystems": [30002510]
+    },
+    "via": [{
+      "solarSystem": 30002569
+    }],
+    "to": {
+      "solarSystem": 30002053
+    }
+  },
+  "capabilities": {
+    "jumpGate": {}
+  }
+}

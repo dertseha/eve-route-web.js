@@ -1,0 +1,10 @@
+{
+  "route": {
+    "from": {
+      "solarSystems": [1]
+    }
+  },
+  "capabilities": {
+    "jumpGate": {}
+  }
+}

@@ -92,8 +92,6 @@ WebServer.prototype.onGetIndex = function(req, res) {
 };
 
 WebServer.prototype.onPostRouteFind = function(req, res) {
-  // curl -v --data-binary @test/requests/minimal.json --header "Content-Type: application/json" http://127.0.0.1:3000/route/find
-
   var log = this.log;
   var messageLibrary = this.messageLibrary;
   var keptResult = null;
