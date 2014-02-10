@@ -142,7 +142,7 @@ BusinessLogic.prototype.getWaypointsForRequest = function(request, rule) {
 
   if (request.route.via) {
     request.route.via.forEach(function(via) {
-      var criterion = self.getSearchCriterionForEntry(via, rule);
+      var criterion = self.getSearchCriterionForEntry(via, rule, request.route.avoid);
 
       if (criterion) {
         waypoints.push(criterion);
@@ -157,21 +157,37 @@ BusinessLogic.prototype.getDestinationForRequest = function(request, rule) {
   var destination = null;
 
   if (request.route.to) {
-    destination = this.getSearchCriterionForEntry(request.route.to, rule);
+    destination = this.getSearchCriterionForEntry(request.route.to, rule, request.route.avoid);
   }
 
   return destination;
 };
 
-BusinessLogic.prototype.getSearchCriterionForEntry = function(entry, rule) {
-  var criterion = null;
+BusinessLogic.prototype.getSearchCriterionForEntry = function(entry, rule, avoid) {
+  var criteria = [];
+  var avoidCriterion = this.getAvoidanceCriterion(avoid);
 
   if (entry.solarSystem) {
-    criterion = new everoute.travel.search.CombiningSearchCriterion([
+    criteria = [
       new everoute.travel.search.DestinationSystemSearchCriterion(
         this.baseUniverse.getSolarSystem(entry.solarSystem).getId()),
       new everoute.travel.search.CostAwareSearchCriterion(rule)
-    ]);
+    ];
+  }
+  if ((criteria.length > 0) && avoidCriterion) {
+    criteria.push(avoidCriterion);
+  }
+
+  return criteria ? new everoute.travel.search.CombiningSearchCriterion(criteria) : null;
+};
+
+BusinessLogic.prototype.getAvoidanceCriterion = function(avoid) {
+  var criterion = null;
+
+  if (avoid) {
+    if (avoid.solarSystems) {
+      criterion = new everoute.travel.search.SystemAvoidingSearchCriterion(avoid.solarSystems);
+    }
   }
 
   return criterion;

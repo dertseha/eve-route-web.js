@@ -24,6 +24,11 @@
           "description": "If given, this destination will always be the last of the route.",
 
           "$ref": "#travelEntry"
+        },
+        "avoid": {
+          "title": "Things to avoid when finding a path",
+
+          "$ref": "#avoidEntry"
         }
       },
       "required": ["from"]
@@ -53,6 +58,19 @@
           "title": "A fixed solar system",
 
           "$ref": "types.json#solarSystemId"
+        }
+      }
+    },
+
+    "avoidEntry": {
+      "id": "#avoidEntry",
+      "type": "object",
+      "properties": {
+        "solarSystems": {
+          "title": "A list of solar systems to avoid",
+          "description": "If provided, any solar system listed here will not be used as transit system.",
+
+          "$ref": "types.json#solarSystemIdList"
         }
       }
     }
