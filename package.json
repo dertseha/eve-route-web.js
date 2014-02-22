@@ -1,6 +1,6 @@
 {
   "name": "eve-route-web",
-  "version": "0.3.0",
+  "version": "0.3.1-snapshot",
   "description": "A web runner for eve-route.js",
   "private": true,
   "author": {
