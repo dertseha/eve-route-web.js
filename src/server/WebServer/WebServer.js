@@ -118,7 +118,7 @@ WebServer.prototype.onPostRouteFind = function(req, res) {
 
   } else {
     var promise = this.businessLogic.requestRoute(req.body);
-    var timedPromise = promise.timeout(20000).then(function(finalResult) {
+    var timedPromise = promise.timeout(this.httpConfig.requestTimeoutMSec).then(function(finalResult) {
       sendResult(finalResult);
 
     }).progressed(function(intermediateResult) {

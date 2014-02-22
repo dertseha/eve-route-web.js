@@ -60,7 +60,21 @@
           "enum": [0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
         }
       }
+    },
+
+    "jumpDistanceParam": {
+      "title": "The jump distance rule helps minimize jump fuel cost",
+      "description": "Paths with the least usage of jump drives are preferred.",
+
+      "id": "#jumpDistanceParam",
+      "type": "object",
+      "properties": {
+        "priority": {
+          "$ref": "#rulePriority"
+        }
+      }
     }
+
   },
 
   "title": "A generic travel rule",
@@ -76,6 +90,9 @@
     },
     "maxSecurity": {
       "$ref": "#maxSecurityParam"
+    },
+    "jumpDistance": {
+      "$ref": "#jumpDistanceParam"
     }
   }
 }

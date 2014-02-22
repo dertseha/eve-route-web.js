@@ -8,6 +8,23 @@
 
       "id": "#jumpGateCapability",
       "type": "object"
+    },
+
+    "jumpDriveCapability": {
+      "title": "Capability description for using jump drives",
+      "description": "This capability allows the usage of jump drives between systems of New Eden.",
+
+      "id": "#jumpDriveCapability",
+      "type": "object",
+      "properties": {
+        "distanceLimit": {
+          "description": "The upper limit in light years that can be travelled in one jump.",
+
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": ["distanceLimit"]
     }
 
   },
@@ -19,6 +36,9 @@
   "properties": {
     "jumpGate": {
       "$ref": "#jumpGateCapability"
+    },
+    "jumpDrive": {
+      "$ref": "#jumpDriveCapability"
     }
   }
 }

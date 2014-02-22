@@ -1,6 +1,6 @@
 {
   "name": "eve-route-web",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A web runner for eve-route.js",
   "private": true,
   "author": {
@@ -20,13 +20,13 @@
   "readmeFilename": "README.md",
   "dependencies": {
     "bluebird": "~1.0.1",
-    "eve-route": "0.2.0",
+    "eve-route": "0.3.0",
     "express": "3.4.x",
     "infuse.js": "~0.6.9",
     "jade": "*",
     "nconf": "0.6.x",
     "tv4": "~1.0.10",
-    "underscore": "~1.5.2",
+    "underscore": "~1.6.0",
     "winston": "0.7.x"
   },
   "devDependencies": {

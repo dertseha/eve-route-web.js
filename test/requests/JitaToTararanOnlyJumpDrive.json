@@ -1,0 +1,20 @@
+{
+  "route": {
+    "from": {
+      "solarSystems": [30000142]
+    },
+    "to": {
+      "solarSystem": 30002979
+    }
+  },
+  "capabilities": {
+    "jumpDrive": {
+      "distanceLimit": 11.25
+    }
+  },
+  "rules": {
+    "jumpDistance": {
+      "priority": 0
+    }
+  }
+}

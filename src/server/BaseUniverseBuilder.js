@@ -101,6 +101,7 @@ function buildBaseUniverse() {
   everoute.travel.rules.security.extendUniverse(builder);
 
   addJumpGates(builder, solarSystemIdsByName);
+  everoute.travel.capabilities.jumpDrive.extendUniverse(builder);
 
   return builder.build();
 }

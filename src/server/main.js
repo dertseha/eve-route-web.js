@@ -10,6 +10,7 @@ function getConfiguration() {
   nconf.env();
   nconf.defaults({
     "http": {
+      requestTimeoutMSec: 25000,
       port: process.env.PORT || 3000,
       secret: "" // secret for cookies/session
     }

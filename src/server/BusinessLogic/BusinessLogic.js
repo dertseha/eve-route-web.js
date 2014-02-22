@@ -97,6 +97,10 @@ BusinessLogic.prototype.getCapabilityForRequest = function(request) {
   if (request.capabilities.jumpGate) {
     capabilities.push(new everoute.travel.capabilities.jumpGate.JumpGateTravelCapability(this.baseUniverse));
   }
+  if (request.capabilities.jumpDrive) {
+    capabilities.push(new everoute.travel.capabilities.jumpDrive.JumpDriveTravelCapability(this.baseUniverse,
+      request.capabilities.jumpDrive.distanceLimit));
+  }
 
   return new everoute.travel.capabilities.CombiningTravelCapability(capabilities);
 };
@@ -122,6 +126,8 @@ BusinessLogic.prototype.getRuleForRequest = function(request) {
         result = everoute.travel.rules.security.getMinRule(param.limit);
       } else if (ruleType === "maxSecurity") {
         result = everoute.travel.rules.security.getMaxRule(param.limit);
+      } else if (ruleType === "jumpDistance") {
+        result = everoute.travel.rules.jumpDistance.getRule();
       } else {
         throw new Error("Unknown rule type <" + ruleType + ">");
       }
