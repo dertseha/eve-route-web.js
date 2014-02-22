@@ -20,7 +20,7 @@
   "readmeFilename": "README.md",
   "dependencies": {
     "bluebird": "~1.0.1",
-    "eve-route": "0.3.0",
+    "eve-route": "0.3.1",
     "express": "3.4.x",
     "infuse.js": "~0.6.9",
     "jade": "*",
