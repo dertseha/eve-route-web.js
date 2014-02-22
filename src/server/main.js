@@ -1,4 +1,4 @@
-/* global process */
+/* global process, setImmediate */
 "use strict";
 
 function getConfiguration() {
@@ -64,9 +64,13 @@ function main() {
   injector.mapValue("config", getConfiguration());
   injector.mapValue("log", getLogger());
 
-  injector.mapValue("baseUniverse", getBaseUniverse(injector));
+  startWebServer(injector);
 
-  startWebServer(injector, new BusinessLogic(injector));
+  setImmediate(function() {
+    injector.mapValue("baseUniverse", getBaseUniverse(injector));
+    injector.mapValue("businessLogic", new BusinessLogic(injector));
+    injector.getValue("log").info("Business Logic initialized");
+  });
 }
 
 main();

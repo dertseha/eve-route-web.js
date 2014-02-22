@@ -8,11 +8,11 @@ var _ = require("underscore");
 var express = require("express");
 var Promise = require("bluebird");
 
-function WebServer(injector, messageLibrary, businessLogic) {
+function WebServer(injector, messageLibrary) {
+  this.injector = injector;
   this.log = injector.getValue("log");
   this.httpConfig = injector.getValue("config").get("http");
   this.messageLibrary = messageLibrary;
-  this.businessLogic = businessLogic;
 }
 
 WebServer.DEFAULT_SECRET = "Some secret secret";
@@ -95,6 +95,7 @@ WebServer.prototype.onPostRouteFind = function(req, res) {
   var log = this.log;
   var messageLibrary = this.messageLibrary;
   var keptResult = null;
+  var businessLogic = this.injector.getValue("businessLogic");
 
   function sendError(status, message) {
     res.status(status).json({
@@ -116,8 +117,11 @@ WebServer.prototype.onPostRouteFind = function(req, res) {
   } else if (!messageLibrary.isValidData(req.body, "RouteRequest.json")) {
     sendError(400, "Request body is not according to schema");
 
+  } else if (!businessLogic) {
+    sendError(503, "Server not yet ready, try later");
+
   } else {
-    var promise = this.businessLogic.requestRoute(req.body);
+    var promise = businessLogic.requestRoute(req.body);
     var timedPromise = promise.timeout(this.httpConfig.requestTimeoutMSec).then(function(finalResult) {
       sendResult(finalResult);
 
