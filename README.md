@@ -4,6 +4,8 @@
 
 The web runner for eve-route.js.
 
+**This project is discontinued. It has been superseded by [everoute-web](https://github.com/dertseha/everoute-web), an implementation in Go. Should someone find reuse of this library, I'd be happy about a reference.**
+
 ### Route finding via JSON requests
 
 The URL ```<server>/route/find``` accepts a POST with application/json that follows the schema of ```src/schema/RouteRequest.json```. If successfull, the result will be an application/json response following the schema of ```src/schema/RouteResponse.json```.
